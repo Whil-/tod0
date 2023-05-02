@@ -49,7 +49,8 @@ def lst(args):
 
 def lst2(args):
     tasks = wrapper.get_tasks(list_name=args.list_name)
-    tasks_details = [str(x) for x in tasks]
+    sorted_tasks = sorted(tasks, key=lambda n: (n.completed_datetime is None, n.completed_datetime))
+    tasks_details = [str(x) for x in sorted_tasks]
     print_list(tasks_details)
 
 
