@@ -74,7 +74,7 @@ def get_tasks(list_name: str = None, list_id: str = None, num_tasks: int = 100):
         list_id = get_list_id_by_name(list_name)
 
     endpoint = (
-        f"{BASE_URL}/{list_id}/tasks?$filter=status ne 'completed'&$top={num_tasks}"
+        f"{BASE_URL}/{list_id}/tasks?$top={num_tasks}"
     )
     session = get_oauth_session()
     response = session.get(endpoint)

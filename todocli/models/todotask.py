@@ -52,3 +52,9 @@ class Task:
             )
         else:
             self.body_last_modified_datetime = None
+
+    def __str__(self):
+        if self.status == "completed":
+            return f'{{{{[[DONE]]}}}} {self.title} (Completed: {self.completed_datetime})'
+        else:
+            return f'{{{{[[TODO]]}}}} {self.title}'

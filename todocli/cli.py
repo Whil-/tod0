@@ -47,6 +47,12 @@ def lst(args):
     print_list(tasks_titles)
 
 
+def lst2(args):
+    tasks = wrapper.get_tasks(list_name=args.list_name)
+    tasks_details = [str(x) for x in tasks]
+    print_list(tasks_details)
+
+
 def new(args):
     task_list, name = parse_task_path(args.task_name)
 
@@ -112,6 +118,18 @@ def setup_parser():
                                 all tasks from the default task list will be displayed",
     )
     subparser.set_defaults(func=lst)
+
+    # create parser for 'lst2' command
+    subparser = subparsers.add_parser("lst2", help="Display detailed tasks from a list")
+    subparser.add_argument(
+        "list_name",
+        nargs="?",
+        default="Tasks",
+        help="This optional argument specifies the list from which the tasks are displayed."
+        "If this parameter is omitted, \
+                                all tasks from the default task list will be displayed",
+    )
+    subparser.set_defaults(func=lst2)
 
     # create parser for 'new' command
     subparser = subparsers.add_parser("new", help="Add a new task")
